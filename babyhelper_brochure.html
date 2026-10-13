@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BabyHelper AI Brochure</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Outfit', sans-serif;
+            background-color: #e2e8f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .brochure {
+            width: 297mm;
+            height: 210mm;
+            background: #ffffff;
+            display: flex;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .panel {
+            flex: 1 1 0;
+            /* equal sections */
+            width: 99mm;
+            height: 100%;
+            padding: 15mm;
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px dashed #cbd5e1;
+        }
+
+        .panel:last-child {
+            border-right: none;
+        }
+
+        /* Typography */
+        h1,
+        h2,
+        h3,
+        h4 {
+            margin: 0;
+            color: #064e3b;
+        }
+
+        p {
+            margin: 0 0 10px 0;
+            color: #334155;
+            font-size: 11px;
+            line-height: 1.5;
+            text-align: justify;
+        }
+
+        .section-header {
+            background-color: #064e3b;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-header svg {
+            width: 16px;
+            height: 16px;
+            fill: white;
+        }
+
+        /* Colors based on app */
+        :root {
+            --primary: #064e3b;
+            --secondary: #0f766e;
+            --accent-green: #10b981;
+            --accent-blue: #3b82f6;
+            --accent-red: #ef4444;
+            --bg-light: #f8fafc;
+        }
+
+        /* --- PANEL 1: FRONT --- */
+        .front-panel {
+            padding: 0;
+            /* custom padding for header/footer */
+            background: #ffffff;
+        }
+
+        .front-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15mm 15mm 5mm 15mm;
+        }
+
+        .logo-box {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 5px;
+        }
+
+        .logo-box img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .brand-title {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: 1px;
+            line-height: 1;
+        }
+
+        .brand-subtitle {
+            font-size: 10px;
+            color: var(--secondary);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .main-headline {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1.2;
+            padding: 0 15mm;
+            margin-bottom: 10px;
+        }
+
+        .main-desc {
+            padding: 0 15mm;
+            font-size: 10.5px;
+            font-weight: 400;
+            color: #475569;
+            margin-bottom: 0;
+        }
+
+        /* Interactive CSS Phone Mockup */
+        .phone-container {
+            flex-grow: 1;
+            margin: 10px 15mm 0 15mm;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .phone-frame {
+            width: 100%;
+            height: 100%;
+            background: #1f2937;
+            border-radius: 24px 24px 0 0;
+            padding: 8px 8px 0 8px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .phone-inner {
+            background: #FAF8F5;
+            border-radius: 18px 18px 0 0;
+            flex-grow: 1;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            padding: 12px;
+            text-align: left;
+        }
+
+        /* Phone UI Elements */
+        .ui-welcome {
+            font-size: 9px;
+            color: #475569;
+            margin-bottom: 2px;
+            font-weight: 500;
+        }
+
+        .ui-name {
+            font-size: 17px;
+            font-weight: 700;
+            color: #0f172a;
+            line-height: 1.2;
+        }
+
+        .ui-baby {
+            font-size: 9px;
+            color: #0D9488;
+            font-weight: 600;
+            margin-top: 4px;
+            margin-bottom: 12px;
+        }
+
+        .ui-heading {
+            font-size: 11px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 8px;
+        }
+
+        .ui-modules {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 14px;
+        }
+
+        .ui-module {
+            flex: 1;
+            border-radius: 8px;
+            padding: 10px 6px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            align-items: flex-start;
+        }
+
+        .ui-module-icon {
+            width: 18px;
+            height: 18px;
+            background: rgba(255, 255, 255, 0.25);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ui-module-text {
+            font-size: 8px;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .ui-tip {
+            background: #E8F5E9;
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 14px;
+        }
+
+        .ui-tip-title {
+            font-size: 9px;
+            font-weight: 700;
+            color: #064E3B;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-bottom: 6px;
+        }
+
+        .ui-tip-text {
+            font-size: 8px;
+            color: #334155;
+            line-height: 1.5;
+            font-weight: 500;
+        }
+
+        .ui-activity {
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: auto;
+        }
+
+        .ui-nav {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            padding-top: 8px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .ui-nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            color: #94a3b8;
+        }
+
+        .ui-nav-item.active {
+            color: #0D9488;
+        }
+
+        .front-footer {
+            background: var(--primary);
+            color: white;
+            padding: 12px 15mm;
+            text-align: center;
+        }
+
+        .front-footer p {
+            color: white;
+            font-size: 9px;
+            margin: 2px 0;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        /* --- PANEL 2: INTRO & PROBLEM --- */
+        .intro-text {
+            font-size: 11px;
+            line-height: 1.6;
+            color: #334155;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+
+        .problem-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-left: 4px solid var(--accent-red);
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 12px;
+        }
+
+        .problem-card h4 {
+            font-size: 11px;
+            color: var(--primary);
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .problem-card h4 svg {
+            width: 14px;
+            height: 14px;
+            fill: var(--accent-red);
+        }
+
+        .problem-card p {
+            font-size: 10px;
+            margin: 0;
+            color: #475569;
+        }
+
+        /* --- PANEL 3: OBJECTIVES & TEAM --- */
+        .obj-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .obj-item {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+        }
+
+        .obj-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .obj-icon svg {
+            width: 14px;
+            height: 14px;
+            fill: white;
+        }
+
+        .obj-text {
+            font-size: 10px;
+            color: #334155;
+            line-height: 1.4;
+            font-weight: 500;
+            margin: 0;
+        }
+
+        .team-box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 12px;
+            margin-bottom: 15px;
+        }
+
+        .team-member {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .team-member:last-child {
+            margin-bottom: 0;
+        }
+
+        .team-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #d1fae5;
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        .team-info h5 {
+            margin: 0;
+            font-size: 11px;
+            color: var(--primary);
+        }
+
+        .team-info p {
+            margin: 0;
+            font-size: 9px;
+            color: #64748b;
+            font-family: monospace;
+        }
+
+        .supervisor-box {
+            background: #064e3b;
+            color: white;
+            border-radius: 12px;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .supervisor-box .team-avatar {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        .supervisor-box h5 {
+            color: white;
+            margin: 0;
+            font-size: 11px;
+        }
+
+        .supervisor-box p {
+            color: #d1fae5;
+            margin: 0;
+            font-size: 9px;
+            font-family: monospace;
+        }
+
+        /* Decorative Backgrounds */
+        .bg-leaf {
+            position: absolute;
+            opacity: 0.03;
+            pointer-events: none;
+        }
+
+        .bg-leaf-1 {
+            top: -20px;
+            right: -20px;
+            width: 150px;
+        }
+
+        .bg-leaf-2 {
+            bottom: 50px;
+            left: -30px;
+            width: 120px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="brochure">
+        <!-- SVG Leaves for decoration -->
+        <svg class="bg-leaf bg-leaf-1" viewBox="0 0 24 24">
+            <path
+                d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z" />
+        </svg>
+        <svg class="bg-leaf bg-leaf-2" viewBox="0 0 24 24">
+            <path
+                d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z" />
+        </svg>
+
+        <!-- Panel 1: FRONT COVER -->
+        <div class="panel front-panel">
+            <div class="front-header">
+                <div class="logo-box">
+                    <img src="file:///D:/BabyHelperAi/assets/icons/Splash%20logo.png" alt="Logo"
+                        onerror="this.outerHTML='<svg viewBox=\'0 0 24 24\' fill=\'white\' style=\'width:30px;height:30px;\'><path d=\'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z\'/></svg>'">
+                </div>
+                <div>
+                    <div class="brand-title">BABYHELPER AI</div>
+                    <div class="brand-subtitle">YOUR AI PARENT COMPANION</div>
+                </div>
+            </div>
+
+            <div class="main-headline">AI-POWERED MOBILE HEALTH APPLICATION</div>
+            <p class="main-desc">
+                An integrated, privacy-focused mobile assistant bridging the gap between professional pediatric
+                guidelines and daily home care. Unifying cry analysis, WHO growth standard monitoring, age-adaptive
+                nutrition, and sleep tracking.
+            </p>
+
+            <!-- Interactive CSS Phone Mockup -->
+            <div class="phone-container">
+                <div class="phone-frame">
+                    <div class="phone-inner">
+                        <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                            <div>
+                                <div class="ui-welcome">Welcome,</div>
+                                <div class="ui-name">Ihsan Ullah<br>Khan</div>
+                                <div class="ui-baby">Maria • 2 months</div>
+                            </div>
+                            <div style="display:flex; gap:8px; color:#475569;">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                                    <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                                </svg>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                    <path
+                                        d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                                    </path>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div class="ui-heading">Care Modules</div>
+                        <div class="ui-modules">
+                            <div class="ui-module" style="background: linear-gradient(135deg, #60A5FA, #3B82F6);">
+                                <div class="ui-module-icon"><svg width="10" height="10" viewBox="0 0 24 24"
+                                        fill="white">
+                                        <path
+                                            d="M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z" />
+                                    </svg></div>
+                                <div class="ui-module-text">Cry<br>Analyzer</div>
+                            </div>
+                            <div class="ui-module" style="background: linear-gradient(135deg, #34D399, #10B981);">
+                                <div class="ui-module-icon"><svg width="10" height="10" viewBox="0 0 24 24"
+                                        fill="white">
+                                        <path
+                                            d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z" />
+                                    </svg></div>
+                                <div class="ui-module-text">Growth<br>Tracker</div>
+                            </div>
+                            <div class="ui-module" style="background: linear-gradient(135deg, #FB923C, #F97316);">
+                                <div class="ui-module-icon"><svg width="10" height="10" viewBox="0 0 24 24"
+                                        fill="white">
+                                        <path
+                                            d="M11 9H9V2H7v7H5V2H3v7c0 2.12 1.66 3.84 3.75 3.97V22h2.5v-9.03C11.34 12.84 13 11.12 13 9V2h-2v7zm5-3v8h2.5v8H21V2c-2.76 0-5 2.24-5 4z" />
+                                    </svg></div>
+                                <div class="ui-module-text">Nutrition<br>Guide</div>
+                            </div>
+                        </div>
+
+                        <div class="ui-tip">
+                            <div class="ui-tip-title">
+                                <svg width="10" height="10" viewBox="0 0 24 24" fill="#064E3B">
+                                    <path
+                                        d="M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7z" />
+                                </svg>
+                                AI Tip for Today
+                            </div>
+                            <div class="ui-tip-text">
+                                Tummy time starting from birth helps strengthen neck and shoulder muscles. Start with
+                                3-5 minutes.
+                            </div>
+                        </div>
+
+                        <div class="ui-heading">Recent Activity</div>
+                        <div class="ui-activity">
+                            <div
+                                style="width: 24px; height: 24px; background: #E0F2FE; border-radius: 6px; display: flex; align-items: center; justify-content: center;">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="#0284c7">
+                                    <path
+                                        d="M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z" />
+                                </svg>
+                            </div>
+                            <div style="flex: 1;">
+                                <div style="font-size: 9px; font-weight: 700; color: #0f172a;">Cry Analyzer</div>
+                                <div style="font-size: 8px; color: #64748b; font-weight: 500;">Detected: Tired</div>
+                            </div>
+                            <div style="font-size: 7px; color: #94a3b8; font-weight: 600;">11h ago</div>
+                        </div>
+
+                        <div class="ui-nav">
+                            <div class="ui-nav-item active">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+                                </svg>
+                                <span style="font-size: 7px; font-weight: 700;">Home</span>
+                            </div>
+                            <div class="ui-nav-item">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z" />
+                                </svg>
+                                <span style="font-size: 7px; font-weight: 500;">Cry</span>
+                            </div>
+                            <div class="ui-nav-item">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z" />
+                                </svg>
+                                <span style="font-size: 7px; font-weight: 500;">Growth</span>
+                            </div>
+                            <div class="ui-nav-item">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M11 9H9V2H7v7H5V2H3v7c0 2.12 1.66 3.84 3.75 3.97V22h2.5v-9.03C11.34 12.84 13 11.12 13 9V2h-2v7zm5-3v8h2.5v8H21V2c-2.76 0-5 2.24-5 4z" />
+                                </svg>
+                                <span style="font-size: 7px; font-weight: 500;">Nutrition</span>
+                            </div>
+                            <div class="ui-nav-item">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z" />
+                                </svg>
+                                <span style="font-size: 7px; font-weight: 500;">Sleep</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="front-footer">
+                <p>National University of Modern Languages (NUML)</p>
+                <p style="color: #A7F3D0; font-weight: 400;">Department of Computer Science</p>
+                <p style="color: #A7F3D0; font-weight: 400;">Final Year Project (FYP)</p>
+            </div>
+        </div>
+
+        <!-- Panel 2: INTRO & PROBLEM -->
+        <div class="panel">
+            <div class="section-header">
+                <svg viewBox="0 0 24 24">
+                    <path
+                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
+                </svg>
+                Introduction
+            </div>
+            <p class="intro-text">
+                Infant care introduces significant maternal anxiety and stress, especially in urban Pakistani
+                environments transitioning rapidly from joint family systems to isolated nuclear units. Parents
+                regularly struggle to accurately interpret non-verbal distress signals, avoid manual tracking errors of
+                growth milestones, and implement proper weaning metrics.
+            </p>
+            <p class="intro-text">
+                Our project resolves this operational vulnerability by introducing an intelligent mobile application.
+                BabyHelper AI executes edge-based audio deep learning alongside statistical child development frameworks
+                directly on low-to-mid-range hardware, facilitating highly context-aware home healthcare assistance
+                anytime and anywhere.
+            </p>
+
+            <div class="section-header" style="margin-top: 15px;">
+                <svg viewBox="0 0 24 24">
+                    <path
+                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" />
+                </svg>
+                Problem Statement
+            </div>
+            <p style="margin-bottom: 15px; font-weight: 600; color: #1e293b; font-size: 11px;">
+                Many parents operate without necessary structural intergenerational parenting support, exposing infants
+                to vulnerabilities due to:
+            </p>
+
+            <div class="problem-card">
+                <h4>
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" />
+                    </svg>
+                    Data Fatigue
+                </h4>
+                <p>Parents must context-switch across multiple disjointed apps for tracking.</p>
+            </div>
+            <div class="problem-card">
+                <h4>
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" />
+                    </svg>
+                    Subjective Evaluation
+                </h4>
+                <p>Baby cries are subjectively evaluated, masking critical distress anomalies like acute pain.</p>
+            </div>
+            <div class="problem-card">
+                <h4>
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" />
+                    </svg>
+                    Irrelevant Guidelines
+                </h4>
+                <p>Malnutrition and stunting remain widespread due to non-localized, culturally irrelevant Western diet
+                    guidelines.</p>
+            </div>
+        </div>
+
+        <!-- Panel 3: OBJECTIVES & TEAM -->
+        <div class="panel">
+            <div class="section-header">
+                <svg viewBox="0 0 24 24">
+                    <path
+                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                </svg>
+                Key Objectives
+            </div>
+
+            <div class="obj-grid">
+                <div class="obj-item">
+                    <div class="obj-icon" style="background: var(--accent-blue);">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z" />
+                        </svg>
+                    </div>
+                    <p class="obj-text">Provide offline, privacy-preserving, AI-powered infant cry classification
+                        directly on the smartphone.</p>
+                </div>
+                <div class="obj-item">
+                    <div class="obj-icon" style="background: var(--accent-green);">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z" />
+                        </svg>
+                    </div>
+                    <p class="obj-text">Implement clinical growth anomaly screening using automated WHO LMS statistical
+                        z-score formulas.</p>
+                </div>
+                <div class="obj-item">
+                    <div class="obj-icon" style="background: var(--accent-red);">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M11 9H9V2H7v7H5V2H3v7c0 2.12 1.66 3.84 3.75 3.97V22h2.5v-9.03C11.34 12.84 13 11.12 13 9V2h-2v7z" />
+                        </svg>
+                    </div>
+                    <p class="obj-text">Deliver age-adaptive nutritional guidance.</p>
+                </div>
+                <div class="obj-item">
+                    <div class="obj-icon" style="background: var(--secondary);">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z" />
+                        </svg>
+                    </div>
+                    <p class="obj-text">Synthesize comprehensive daily and weekly sleep quality trend charts to help
+                        optimize infant sleep environments.</p>
+                </div>
+            </div>
+
+            <div class="section-header" style="margin-top: auto;">
+                <svg viewBox="0 0 24 24">
+                    <path
+                        d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" />
+                </svg>
+                Project Team
+            </div>
+
+            <div class="team-box">
+                <div class="team-member">
+                    <div class="team-avatar">IU</div>
+                    <div class="team-info">
+                        <h5>Ihsan Ullah Khan</h5>
+                        <p>0334 1600007</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="team-avatar">TK</div>
+                    <div class="team-info">
+                        <h5>Tayyab Khalid</h5>
+                        <p>0348 5591063</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="team-avatar">MZ</div>
+                    <div class="team-info">
+                        <h5>Mir M. Zeeshan</h5>
+                        <p>0330 4590000</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="supervisor-box">
+                <div class="team-avatar">EA</div>
+                <div class="team-info">
+                    <h5 style="color:white;">Supervised By: Sir Emad Amjad</h5>
+                    <p style="color:#A7F3D0;">0336 5392932</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
